@@ -1,0 +1,12 @@
+<div class="max-w-md mx-auto p-5 border border-gray-300 rounded-lg shadow-md text-center">
+  <h2 class="mb-5">Subir Imagen</h2>
+  <form (ngSubmit)="onSubmit()" #fileForm="ngForm">
+    <input type="file" (change)="onFileSelected($event)" required class="block w-full mb-4">
+    <button type="submit" [disabled]="!selectedFile" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed">
+      Subir
+    </button>
+  </form>
+  <div *ngIf="mensaje" class="mt-5 font-bold text-green-500">
+    {{ mensaje }}
+  </div>
+</div>

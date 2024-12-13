@@ -1,0 +1,52 @@
+<div
+  class="dashboard items-center content-center flex flex-col flex-nowrap justify-center p-[16px]"
+  *ngIf="user"
+>
+  <h1>
+    <strong>Mapa de: {{ user.email }}</strong>
+  </h1>
+
+  <!--Aqui se veran todos los eventos que hayan en la base de datos-->
+  <div class="relative h-[100vh] w-[100vh] mx-auto">
+    <div class="absolute inset-0">
+      <app-mapas
+        [ubicacion]="$any(mapaForm.get('mapa.ubicacion'))"
+        [mostrarBusqueda]="false"
+      ></app-mapas>
+    </div>
+  </div>
+
+  <form
+    [formGroup]="marcadorForm"
+    (ngSubmit)="onSubmit()"
+    class="mt-4 w-[80vh] mx-auto"
+  >
+    <input
+      formControlName="lugar"
+      placeholder="País o Ciudad"
+      required
+      class="w-full p-2 border border-gray-300 rounded"
+    />
+    <button
+      type="submit"
+      class="mt-2 rounded bg-blue-500 px-6 py-2 font-bold text-white shadow-lg hover:bg-blue-700"
+    >
+      Añadir Marcador
+    </button>
+  </form>
+
+  <div class="fixed top-4 right-4 flex space-x-4">
+    <button
+      class="rounded bg-blue-500 px-6 py-2 font-bold text-white shadow-lg hover:bg-blue-700"
+      (click)="logOut()"
+    >
+      LogOut
+    </button>
+    <button
+      class="rounded bg-blue-500 px-6 py-2 font-bold text-white shadow-lg hover:bg-blue-700"
+      (click)="toProfile()"
+    >
+      Profile
+    </button>
+  </div>
+</div>
